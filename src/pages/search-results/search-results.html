@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+      <ion-title>Trayectos disponibles</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+  
+  <ion-list >
+        <button ion-item detail-none (click)="goToTrip(trip)" *ngFor="let trip of trips | async" >
+            
+            <ion-row >
+              <ion-col col-1>
+                  <ion-icon small name="md-arrow-down"></ion-icon>
+              </ion-col>
+              <ion-col col-4>                
+                  <li>{{ trip.origin }}</li>
+                  <br>
+                  <li>{{ trip.destination }}</li>                    
+              </ion-col>
+              <ion-col>
+                  <li><ion-icon name="md-calendar"></ion-icon>
+                  {{ trip.departureDate  | date: 'dd/MM' }}  </li>                 
+                  <li><h1 id="price">{{ trip.totalSeats - trip.avaiableSeats }}/{{ trip.totalSeats}}</h1></li>
+              </ion-col>
+              <ion-col>
+                  <li align="right"><ion-icon name="md-alarm"></ion-icon>
+                  {{ trip.departureTime }} </li>
+                  <li align="right"><h1 id="price"> {{ trip.price }}€</h1></li>
+                  <!--{{ trip.price === '0' ? 'GRATIS!' : trip.price+ '€' }}-->
+              </ion-col>
+          </ion-row>
+        </button >
+      
+        
+      
+    </ion-list>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+      
+      <button ion-button icon-left large full (click)='goBack()'>
+          <ion-icon name="md-arrow-back"></ion-icon>
+          Nueva búsqueda
+      </button>
+        
+    </ion-toolbar>
+  </ion-footer>
+  
+  
+  
